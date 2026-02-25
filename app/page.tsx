@@ -143,7 +143,7 @@ export default function DashboardPage() {
                 </div>
                 <div className="w-full bg-muted rounded-full h-2">
                   <div
-                    className="bg-accent h-2 rounded-full transition-all duration-300"
+                    className="bg-gradient-to-r from-cyan-500 to-blue-500 h-2 rounded-full transition-all duration-300"
                     style={{ width: `${data.longevityAllocation}%` }}
                   />
                 </div>

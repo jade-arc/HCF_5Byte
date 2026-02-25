@@ -8,14 +8,46 @@ import { Download } from 'lucide-react';
 
 export function TransactionSummary() {
   const [timeframe, setTimeframe] = useState<'6m' | '12m' | 'ytd'>('6m');
-  const data = [
-    { month: 'Jan', spending: 3800, income: 5200 },
-    { month: 'Feb', spending: 4100, income: 5200 },
-    { month: 'Mar', spending: 3900, income: 5500 },
-    { month: 'Apr', spending: 4400, income: 5200 },
-    { month: 'May', spending: 4200, income: 5300 },
-    { month: 'Jun', spending: 4300, income: 5200 },
+  
+  // Generate 24 months of data (2 years)
+  const allMonthsData = [
+    // 2024
+    { month: 'Jan 24', spending: 3600, income: 5000 },
+    { month: 'Feb 24', spending: 3800, income: 5000 },
+    { month: 'Mar 24', spending: 4100, income: 5200 },
+    { month: 'Apr 24', spending: 3900, income: 5200 },
+    { month: 'May 24', spending: 4300, income: 5300 },
+    { month: 'Jun 24', spending: 4200, income: 5200 },
+    { month: 'Jul 24', spending: 4500, income: 5400 },
+    { month: 'Aug 24', spending: 4100, income: 5200 },
+    { month: 'Sep 24', spending: 4400, income: 5300 },
+    { month: 'Oct 24', spending: 3900, income: 5200 },
+    { month: 'Nov 24', spending: 4600, income: 5500 },
+    { month: 'Dec 24', spending: 5100, income: 5800 },
+    // 2025
+    { month: 'Jan 25', spending: 4200, income: 5300 },
+    { month: 'Feb 25', spending: 4100, income: 5200 },
+    { month: 'Mar 25', spending: 4300, income: 5300 },
+    { month: 'Apr 25', spending: 4400, income: 5400 },
+    { month: 'May 25', spending: 4150, income: 5250 },
+    { month: 'Jun 25', spending: 4350, income: 5350 },
+    { month: 'Jul 25', spending: 4500, income: 5500 },
+    { month: 'Aug 25', spending: 4200, income: 5300 },
+    { month: 'Sep 25', spending: 4450, income: 5400 },
+    { month: 'Oct 25', spending: 4100, income: 5200 },
+    { month: 'Nov 25', spending: 4550, income: 5450 },
+    { month: 'Dec 25', spending: 5000, income: 5700 },
   ];
+
+  // Filter data based on timeframe
+  const get6mData = () => allMonthsData.slice(-6);
+  const get12mData = () => allMonthsData.slice(-12);
+  const getYtdData = () => {
+    // YTD 2025 (Jan-Dec 2025)
+    return allMonthsData.slice(12);
+  };
+
+  const data = timeframe === '6m' ? get6mData() : timeframe === '12m' ? get12mData() : getYtdData();
 
   return (
     <Card className="bg-card border-border p-6 hover:border-primary/50 transition-colors">

@@ -4,7 +4,9 @@ import { useState, useEffect } from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { AlertCircle, Copy, Eye, EyeOff, Trash2, Plus, Check } from 'lucide-react';
+import { AlertCircle, Copy, Eye, EyeOff, Trash2, Plus, Check, ChevronLeft } from 'lucide-react';
+import { ThemeToggle } from '@/components/theme-toggle';
+import Link from 'next/link';
 
 interface StoredApiKey {
   id: string;
@@ -119,10 +121,23 @@ export default function ApiKeysPage() {
   }
 
   return (
-    <div className="min-h-screen bg-background py-8">
-      <div className="container mx-auto px-4">
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-foreground mb-2">API Key Management</h1>
+    <div className="min-h-screen bg-background">
+      <header className="border-b border-border bg-card sticky top-0 z-10">
+        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+          <Link href="/">
+            <Button variant="ghost" size="sm" className="gap-2">
+              <ChevronLeft className="h-4 w-4" />
+              Back
+            </Button>
+          </Link>
+          <ThemeToggle />
+        </div>
+      </header>
+
+      <div className="py-8">
+        <div className="container mx-auto px-4">
+          <div className="mb-8">
+            <h1 className="text-3xl font-bold text-foreground mb-2">API Key Management</h1>
           <p className="text-muted-foreground">
             Add your AI provider API keys to enable dynamic data analysis and portfolio optimization. Keys are stored locally in your browser.
           </p>
@@ -386,6 +401,8 @@ export default function ApiKeysPage() {
             </div>
           </div>
         </Card>
+      </div>
+        </div>
       </div>
     </div>
   );

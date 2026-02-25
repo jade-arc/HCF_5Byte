@@ -4,8 +4,9 @@ import { useState } from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Upload, Plus, Trash2, CheckCircle, AlertCircle, ArrowLeft } from 'lucide-react';
+import { Upload, Plus, Trash2, CheckCircle, AlertCircle, ChevronLeft } from 'lucide-react';
 import { useUserTransactions } from '@/hooks/use-user-transactions';
+import { ThemeToggle } from '@/components/theme-toggle';
 import Link from 'next/link';
 
 const CATEGORIES = [
@@ -138,17 +139,26 @@ export default function DataInputPage() {
   };
 
   return (
-    <div className="min-h-screen bg-background py-8">
-      <div className="container mx-auto px-4">
-        <div className="mb-8">
-          <Link href="/" className="flex items-center gap-2 text-primary hover:text-primary/80 mb-4 w-fit">
-            <ArrowLeft className="h-4 w-4" />
-            Back to Dashboard
+    <div className="min-h-screen bg-background">
+      <header className="border-b border-border bg-card sticky top-0 z-10">
+        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+          <Link href="/">
+            <Button variant="ghost" size="sm" className="gap-2">
+              <ChevronLeft className="h-4 w-4" />
+              Back
+            </Button>
           </Link>
-          <div className="flex items-center gap-3 mb-2">
-            <Upload className="h-8 w-8 text-primary" />
-            <h1 className="text-3xl font-bold text-foreground">Add Transaction Data</h1>
-          </div>
+          <ThemeToggle />
+        </div>
+      </header>
+
+      <div className="py-8">
+        <div className="container mx-auto px-4">
+          <div className="mb-8">
+            <div className="flex items-center gap-3 mb-2">
+              <Upload className="h-8 w-8 text-primary" />
+              <h1 className="text-3xl font-bold text-foreground">Add Transaction Data</h1>
+            </div>
           <p className="text-muted-foreground">
             Manually input transactions or upload via CSV. The AI will analyze this data to optimize your portfolio.
           </p>
@@ -319,6 +329,8 @@ export default function DataInputPage() {
             <p className="text-sm text-muted-foreground">Add transactions using the form above or import from CSV</p>
           </Card>
         )}
+      </div>
+        </div>
       </div>
     </div>
   );

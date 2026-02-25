@@ -1,5 +1,8 @@
+'use client';
+
 import { Settings, Bell } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { ThemeToggle } from '@/components/theme-toggle';
 
 export function DashboardHeader() {
   return (
@@ -11,7 +14,8 @@ export function DashboardHeader() {
             AI-Powered Retirement Portfolio Optimizer
           </p>
         </div>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 md:gap-3">
+          <ThemeToggle />
           <Button variant="ghost" size="icon">
             <Bell className="h-5 w-5 text-foreground" />
           </Button>
